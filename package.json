@@ -17,8 +17,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "start": "node server.mjs",
     "preview": "vite preview",
     "keys": "python3 content/make_course.py",
-    "test": "node --experimental-strip-types src/calendar.test.ts && node --experimental-strip-types src/progress.test.ts"
+    "test": "node --experimental-strip-types src/calendar.test.ts && node --experimental-strip-types src/progress.test.ts && node --test server/desk.test.mjs"
   }
 }

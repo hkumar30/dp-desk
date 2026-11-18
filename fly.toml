@@ -1,0 +1,25 @@
+app = "dp-desk"
+primary_region = "bom"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  DATA_DIR = "/data"
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory = "256mb"
+
+[[mounts]]
+  source = "dp_desk_data"
+  destination = "/data"

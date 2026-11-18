@@ -43,3 +43,4 @@ vite.config.ts.timestamp-*
 
 # study diary. this fills with sentences and dates while you work
 /content/log.json
+/data/
