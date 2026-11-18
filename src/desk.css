@@ -1,0 +1,102 @@
+:root {
+  color: #2a241c;
+  background: #edebe8;
+  font-family: "Noticia Text", Palatino, Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+button, input, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.sheet {
+  min-height: 100vh;
+  padding: 28px 32px 72px;
+}
+
+.top, .fine, .index, .errors, .commit, .margin button, .top button, .tags button, .texty {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  align-items: baseline;
+}
+
+.top button:last-of-type { margin-left: auto; }
+
+.body {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+.index { list-style: none; margin: 0; padding: 0; line-height: 2; }
+.now { color: #1e3a5f; }
+.errors { margin-top: 28px; line-height: 1.7; }
+.problem, .draft {
+  max-width: 62ch;
+  font-size: 21px;
+  line-height: 1.5;
+  margin: 0;
+}
+.draft { font-style: italic; width: 100%; border: 0; background: transparent; resize: vertical; min-height: 4.5em; }
+.draft:focus { outline: none; }
+.fine { margin: 14px 0 0; }
+.write { margin-top: 36px; max-width: 62ch; }
+.rule-row { display: flex; align-items: center; gap: 16px; margin-top: 12px; }
+.rule { flex: 1; height: 1px; background: #1e3a5f; }
+.commit { color: #1e3a5f; }
+.cells { display: grid; gap: 12px; margin-top: 28px; max-width: 62ch; }
+.cells input, .line input {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  border: 0;
+  border-bottom: 1px solid #1e3a5f;
+  background: transparent;
+  padding: 6px 0;
+}
+.cells input:focus, .line input:focus { outline: none; }
+.hints { margin: 28px 0 0; padding-left: 1.2em; max-width: 62ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 22px; }
+.ruled { font-size: 24px; font-style: italic; line-height: 1.4; max-width: 40ch; }
+.entry { margin-top: 28px; }
+.prose { max-width: 62ch; }
+.prose h2 { font-size: 21px; font-weight: 400; margin: 0 0 12px; }
+.prose h3 { font-size: 18px; font-weight: 400; margin: 24px 0 8px; }
+.prose p, .prose li { font-size: 21px; line-height: 1.5; }
+.prose pre {
+  font-family: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+button:focus-visible, .draft:focus-visible, input:focus-visible {
+  outline: 1px solid #1e3a5f;
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .sheet { padding: 20px 16px 48px; }
+  .body { grid-template-columns: 1fr; gap: 24px; }
+  .problem, .draft, .prose p, .prose li { font-size: 18px; }
+  .top button:last-of-type { margin-left: 0; }
+}

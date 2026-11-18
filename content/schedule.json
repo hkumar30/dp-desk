@@ -1,0 +1,995 @@
+{
+  "rolloverHour": 4,
+  "timezone": "Asia/Kolkata",
+  "offWeekday": "Sunday",
+  "diagnostic": {
+    "id": "diagnostic",
+    "title": "Diagnostic",
+    "minutesEach": 15,
+    "cardIds": [
+      "diag-f1",
+      "diag-f2",
+      "diag-f3",
+      "diag-f4a",
+      "diag-f4b",
+      "diag-f5",
+      "diag-f6"
+    ]
+  },
+  "days": [
+    {
+      "id": "f1d1",
+      "family": 1,
+      "index": 1,
+      "title": "One index",
+      "firstOfFamily": true,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": null,
+          "note": "Nothing older yet. Write the three checks a sentence has to pass: sufficient, small enough, answerable."
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f1d1"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-746",
+            "card-55",
+            "card-f1-hops"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f1d2",
+      "family": 1,
+      "index": 2,
+      "title": "A jump, and a zero",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-f1-stalls"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-2140-alt",
+          "leetcode": 2140
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-746b",
+            "card-139",
+            "card-55"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f1d2"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f1d3",
+      "family": 1,
+      "index": 3,
+      "title": "A circle, then an ending",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-746"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-213"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-53",
+            "card-139b",
+            "card-f1-stalls"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f1d3"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f1d4",
+      "family": 1,
+      "index": 4,
+      "title": "Family 1 check",
+      "firstOfFamily": false,
+      "lastOfFamily": true,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-53"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-213b"
+        },
+        {
+          "kind": "check",
+          "minutes": 48,
+          "cardIds": [
+            "card-746b",
+            "card-f1-stalls",
+            "card-f1-hops",
+            "card-139b"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f2d1",
+      "family": 2,
+      "index": 1,
+      "title": "A budget",
+      "firstOfFamily": true,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-f1-stalls"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f2d1"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-coins-6",
+            "card-subset-11",
+            "decoy-gas"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f2d2",
+      "family": 2,
+      "index": 2,
+      "title": "Each item once",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-coins-6"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-f2-cold-01"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-subset-b",
+            "card-squares",
+            "decoy-stock1"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f2d2"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f2d3",
+      "family": 2,
+      "index": 3,
+      "title": "Combinations and permutations",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-subset-11"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-518"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-377",
+            "card-518b",
+            "card-f1-hops"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f2d3"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f2d4",
+      "family": 2,
+      "index": 4,
+      "title": "Two budgets, then signs",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-377"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-474"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-494",
+            "card-474b",
+            "decoy-gas"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f2d4"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f2d5",
+      "family": 2,
+      "index": 5,
+      "title": "Family 2 check",
+      "firstOfFamily": false,
+      "lastOfFamily": true,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-494"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-494b"
+        },
+        {
+          "kind": "check",
+          "minutes": 48,
+          "cardIds": [
+            "card-squares",
+            "card-subset-b",
+            "card-518b",
+            "card-494b"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f3d1",
+      "family": 3,
+      "index": 1,
+      "title": "Two indices",
+      "firstOfFamily": true,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-474"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f3d1"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-paths",
+            "card-obstacles",
+            "card-coins-6"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f3d2",
+      "family": 3,
+      "index": 2,
+      "title": "Start at the end",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-paths"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-obstacles"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-fall-ordinary",
+            "card-lcs-short",
+            "decoy-stock1"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f3d2"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f3d3",
+      "family": 3,
+      "index": 3,
+      "title": "An anchor on a grid",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-fall-ordinary"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-931",
+          "leetcode": 931
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-health",
+            "card-edit-short",
+            "card-subset-11"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f3d3"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f3d4",
+      "family": 3,
+      "index": 4,
+      "title": "Reverse the question",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-health"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f3d4"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f3d5",
+      "family": 3,
+      "index": 5,
+      "title": "Two strings",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-lcs-short"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-health"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-lcs-short",
+            "card-115-ways",
+            "card-55"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f3d5"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f3d6",
+      "family": 3,
+      "index": 6,
+      "title": "Family 3 check",
+      "firstOfFamily": false,
+      "lastOfFamily": true,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-edit-short"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-edit-short"
+        },
+        {
+          "kind": "check",
+          "minutes": 48,
+          "cardIds": [
+            "card-paths",
+            "card-lcs-short",
+            "card-115-ways",
+            "card-obstacles"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f4d1",
+      "family": 4,
+      "index": 1,
+      "title": "Ending at i",
+      "firstOfFamily": true,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-lis-short"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f4d1"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-lis-short",
+            "card-53",
+            "card-paths"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f4d2",
+      "family": 4,
+      "index": 2,
+      "title": "A pair on the same anchor",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-53"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-lis-short"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-count-lis",
+            "card-pal-count",
+            "decoy-gas"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f4d2"
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f4d3",
+      "family": 4,
+      "index": 3,
+      "title": "A different algorithm",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-lis-short"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-lis-short"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-lps",
+            "card-stick",
+            "card-lcs-short"
+          ]
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f4d3",
+          "optional": true
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f4d4",
+      "family": 4,
+      "index": 4,
+      "title": "Ranges",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-pal-count"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f4d4"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-pal-count",
+            "card-lps",
+            "card-coins-6"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f4d5",
+      "family": 4,
+      "index": 5,
+      "title": "The first cut",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-stick"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f4d5"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-stick",
+            "card-lis-short",
+            "decoy-stock1"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f4d6",
+      "family": 4,
+      "index": 6,
+      "title": "The last balloon",
+      "firstOfFamily": false,
+      "lastOfFamily": true,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-stick"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f4d6"
+        },
+        {
+          "kind": "check",
+          "minutes": 48,
+          "cardIds": [
+            "card-lis-short",
+            "card-count-lis",
+            "card-pal-count",
+            "card-stick"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f5d1",
+      "family": 5,
+      "index": 1,
+      "title": "A mode",
+      "firstOfFamily": true,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-fee"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f5d1"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-fee",
+            "card-two-tx",
+            "card-53"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f5d2",
+      "family": 5,
+      "index": 2,
+      "title": "A rest day",
+      "firstOfFamily": false,
+      "lastOfFamily": true,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-mode-original"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-mode-original"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f5d2"
+        },
+        {
+          "kind": "check",
+          "minutes": 48,
+          "cardIds": [
+            "card-fee",
+            "card-two-tx",
+            "decoy-stock1",
+            "card-mode-original"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f6d1",
+      "family": 6,
+      "index": 1,
+      "title": "A pair from a house",
+      "firstOfFamily": true,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-tree-rob"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f6d1"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-tree-rob",
+            "card-tree-line",
+            "card-f1-stalls"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f6d2",
+      "family": 6,
+      "index": 2,
+      "title": "A set you can write down",
+      "firstOfFamily": false,
+      "lastOfFamily": false,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-tree-line"
+        },
+        {
+          "kind": "lesson",
+          "minutes": 75,
+          "lessonId": "f6d2"
+        },
+        {
+          "kind": "cards",
+          "minutes": 36,
+          "cardIds": [
+            "card-sessions-b",
+            "card-sessions-b",
+            "decoy-gas"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "f6d3",
+      "family": 6,
+      "index": 3,
+      "title": "Family 6 check",
+      "firstOfFamily": false,
+      "lastOfFamily": true,
+      "blocks": [
+        {
+          "kind": "retrieval",
+          "minutes": 15,
+          "cardId": "card-1799-alt"
+        },
+        {
+          "kind": "cold",
+          "minutes": 40,
+          "cardId": "card-1799-alt"
+        },
+        {
+          "kind": "check",
+          "minutes": 48,
+          "cardIds": [
+            "card-tree-rob",
+            "card-1799-alt",
+            "card-sessions-b",
+            "card-tree-line"
+          ]
+        },
+        {
+          "kind": "rule",
+          "minutes": 15
+        }
+      ]
+    }
+  ],
+  "transfer": [
+    {
+      "cardId": "card-279",
+      "leetcode": 279
+    },
+    {
+      "cardId": "card-1049",
+      "leetcode": 1049
+    },
+    {
+      "cardId": "card-718",
+      "leetcode": 718
+    },
+    {
+      "cardId": "card-152",
+      "leetcode": 152
+    },
+    {
+      "cardId": "card-1262",
+      "leetcode": 1262
+    },
+    {
+      "cardId": "card-1289",
+      "leetcode": 1289
+    },
+    {
+      "cardId": "card-97",
+      "leetcode": 97
+    },
+    {
+      "cardId": "card-1039",
+      "leetcode": 1039
+    }
+  ],
+  "posttest": [
+    "post-f1",
+    "post-f2",
+    "post-f3",
+    "post-f4a",
+    "post-f4b",
+    "post-f5",
+    "post-f6"
+  ],
+  "aloud": "aloud-1",
+  "quarantine": [
+    "diag-f1",
+    "diag-f2",
+    "diag-f3",
+    "diag-f4a",
+    "diag-f4b",
+    "diag-f5",
+    "diag-f6",
+    "post-f1",
+    "post-f2",
+    "post-f3",
+    "post-f4a",
+    "post-f4b",
+    "post-f5",
+    "post-f6"
+  ]
+}

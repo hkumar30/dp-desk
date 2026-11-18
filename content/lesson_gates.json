@@ -1,0 +1,240 @@
+{
+  "f1d1": [
+    {
+      "label": "ways to reach step 5",
+      "value": "8"
+    },
+    {
+      "label": "ways to reach step 2",
+      "value": "2"
+    },
+    {
+      "label": "most from houses [2, 7, 9, 3, 1]",
+      "value": "12"
+    },
+    {
+      "label": "most from the first three of those houses",
+      "value": "11"
+    }
+  ],
+  "f1d2": [
+    {
+      "label": "ways to decode 226",
+      "value": "3"
+    },
+    {
+      "label": "ways to decode the prefix 2",
+      "value": "1"
+    }
+  ],
+  "f1d3": [
+    {
+      "label": "largest run sum",
+      "value": "6"
+    },
+    {
+      "label": "largest run ending at the first 4",
+      "value": "4"
+    }
+  ],
+  "f2d1": [
+    {
+      "label": "fewest coins for 6 with coins 1, 3, 4",
+      "value": "2"
+    },
+    {
+      "label": "fewest coins for 3",
+      "value": "1"
+    }
+  ],
+  "f2d2": [
+    {
+      "label": "can [1, 5, 11, 5] make 11 (yes or no)",
+      "value": "yes"
+    },
+    {
+      "label": "can they make 6 (yes or no)",
+      "value": "yes"
+    }
+  ],
+  "f2d3": [
+    {
+      "label": "combinations of [1, 2] for 4",
+      "value": "3"
+    },
+    {
+      "label": "ordered sequences of [1, 2] for 4",
+      "value": "5"
+    }
+  ],
+  "f2d4": [
+    {
+      "label": "ways to make target 3 with five 1s",
+      "value": "5"
+    },
+    {
+      "label": "subsets of five 1s that sum to 4",
+      "value": "5"
+    }
+  ],
+  "f3d1": [
+    {
+      "label": "ways across a 3 by 3 grid",
+      "value": "6"
+    },
+    {
+      "label": "min path of [[1,3,1],[1,5,1],[4,2,1]]",
+      "value": "7"
+    }
+  ],
+  "f3d2": [
+    {
+      "label": "min path of the triangle [[2],[3,4],[6,5,7],[4,1,8,3]]",
+      "value": "11"
+    },
+    {
+      "label": "the bottom-left of that triangle, unchanged",
+      "value": "4"
+    }
+  ],
+  "f3d3": [
+    {
+      "label": "area of the largest square in 101 / 111 / 111",
+      "value": "4"
+    },
+    {
+      "label": "side of the square ending at the bottom-right",
+      "value": "2"
+    }
+  ],
+  "f3d4": [
+    {
+      "label": "entrance health of the classic dungeon",
+      "value": "7"
+    },
+    {
+      "label": "health needed to enter the bottom-right cell",
+      "value": "6"
+    }
+  ],
+  "f3d5": [
+    {
+      "label": "LCS of abcde and ace",
+      "value": "3"
+    },
+    {
+      "label": "LCS of ab and a",
+      "value": "1"
+    }
+  ],
+  "f3d6": [
+    {
+      "label": "edit distance of horse and ros",
+      "value": "3"
+    },
+    {
+      "label": "distance of h to the empty word",
+      "value": "1"
+    }
+  ],
+  "f4d1": [
+    {
+      "label": "LIS length of [10, 9, 2, 5, 3, 7, 101, 18]",
+      "value": "4"
+    },
+    {
+      "label": "LIS ending at 7",
+      "value": "3"
+    }
+  ],
+  "f4d2": [
+    {
+      "label": "number of LIS in [1, 3, 5, 4, 7]",
+      "value": "2"
+    },
+    {
+      "label": "LIS length ending at 4",
+      "value": "3"
+    }
+  ],
+  "f4d3": [
+    {
+      "label": "LIS length again, the same row, the answer the tails array also returns",
+      "value": "4"
+    },
+    {
+      "label": "LIS ending at 2",
+      "value": "1"
+    }
+  ],
+  "f4d4": [
+    {
+      "label": "palindromic slices in aaa",
+      "value": "6"
+    },
+    {
+      "label": "longest palindromic subsequence of bbbab",
+      "value": "4"
+    }
+  ],
+  "f4d5": [
+    {
+      "label": "min cost to cut a stick of length 7 at 1, 3, 4",
+      "value": "14"
+    },
+    {
+      "label": "cost when a segment has no cut inside",
+      "value": "0"
+    }
+  ],
+  "f4d6": [
+    {
+      "label": "burst score of [3, 1, 5]",
+      "value": "35"
+    },
+    {
+      "label": "burst score of [3, 1, 5, 8]",
+      "value": "167"
+    }
+  ],
+  "f5d1": [
+    {
+      "label": "one transaction on [7, 1, 5, 3, 6, 4]",
+      "value": "5"
+    },
+    {
+      "label": "unlimited transactions on [7, 1, 5, 3, 6, 4]",
+      "value": "7"
+    }
+  ],
+  "f5d2": [
+    {
+      "label": "cooldown profit on [1, 2, 3, 0, 2]",
+      "value": "3"
+    },
+    {
+      "label": "cooldown profit on [2, 1, 4, 7]",
+      "value": "6"
+    }
+  ],
+  "f6d1": [
+    {
+      "label": "the five-house tree",
+      "value": "7"
+    },
+    {
+      "label": "a line 4, 1, 4",
+      "value": "8"
+    }
+  ],
+  "f6d2": [
+    {
+      "label": "sessions for [2, 2, 3] with limit 4",
+      "value": "2"
+    },
+    {
+      "label": "sessions for [3, 3] with limit 3",
+      "value": "2"
+    }
+  ]
+}

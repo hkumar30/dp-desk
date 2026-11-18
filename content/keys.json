@@ -1,0 +1,440 @@
+{
+  "diag-f1": {
+    "answer": "7",
+    "mid": "5",
+    "sentence": "dp[i] = the most pay available from task i onward. Take it and jump to i + skip[i] + 1, or skip to i + 1. The answer is dp[0].",
+    "hint3": "pay = [5, 1], skip = [1, 0]. A state that stores 'skips remaining' as a second dimension still computes, and so does a state that does not. Which two futures does a single index already tell apart?"
+  },
+  "post-f1": {
+    "answer": "11",
+    "mid": "11",
+    "sentence": "dp[i] = the most pay from shift i onward. The unavailability is a jump, not a second index. The answer is dp[0].",
+    "hint3": "pay = [4, 9], skip = [1, 0]. Taking both is illegal. What does a state of only 'pay so far' fail to remember?"
+  },
+  "diag-f2": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[i][s] = the number of ways to roll i dice that sum to s. Each die is used once, so the die count is part of the state. The answer is dp[n][target].",
+    "hint3": "n = 2, f = 2, target = 3. If you only remember the sum, you cannot tell whether you have rolled one die or two. Which of those two situations must stay distinct?"
+  },
+  "post-f2": {
+    "answer": "6",
+    "mid": "1",
+    "sentence": "dp[i][s] = ways for i dice to sum to s. The answer is dp[n][target].",
+    "hint3": "One die totaling 7 is impossible. Two dice totaling 7 is not. What did a state that only stores the sum forget?"
+  },
+  "diag-f3": {
+    "answer": "3",
+    "mid": "3",
+    "sentence": "dp[i][j] = the length of the longest common subsequence of the first i letters of a and the first j letters of b. Deletions are len(a) + len(b) - 2 * dp[m][n]. The answer is that number, not dp[m][n] itself.",
+    "hint3": "a = ab, b = a. Deleting nothing leaves them unequal. What does a state of 'letters kept so far, as the string itself' store that the lengths do not need?"
+  },
+  "post-f3": {
+    "answer": "2",
+    "mid": "2",
+    "sentence": "dp[i][j] = LCS length of the prefixes. The answer is len(a) + len(b) - 2 * dp[m][n].",
+    "hint3": "a = a, b = b. The LCS length is 0. A state that only says 'matched so far' without the positions cannot say which letters remain."
+  },
+  "diag-f4a": {
+    "answer": "3",
+    "mid": "2",
+    "sentence": "dp[i] = the longest valid subsequence that ends at index i. The answer is the max of dp, not dp[n - 1].",
+    "hint3": "nums = [1, 3, 2]. A sentence 'longest in the prefix i' cannot tell you whether 2 may follow, because it forgot the last value. Which two endings does that sentence treat as the same?"
+  },
+  "post-f4a": {
+    "answer": "3",
+    "mid": "3",
+    "sentence": "dp[i] = longest doubling subsequence ending at i. The answer is the maximum over i.",
+    "hint3": "nums = [5, 1, 2]. Ending at the last cell is not the answer. What did 'best in the whole prefix' forget about the last value?"
+  },
+  "diag-f4b": {
+    "answer": "35",
+    "mid": "15",
+    "sentence": "Pad with 1. dp[i][j] = the most score from bursting every balloon strictly between i and j. Let k be the last balloon burst in that open interval, so its neighbors are still i and j. The answer is dp[0][n + 1].",
+    "hint3": "nums = [3, 1]. If k is the first balloon you burst, the neighbor of the other balloon changes, and the two sides are not separate. Which choice of k leaves the two sides independent?"
+  },
+  "post-f4b": {
+    "answer": "167",
+    "mid": "5",
+    "sentence": "dp[i][j] = best score bursting balloons strictly between i and j, and k is the last one burst there. The answer is dp[0][n + 1].",
+    "hint3": "nums = [1, 5]. Bursting the left one first changes the neighbor of the right one. A state that stores the set of burst balloons works and does not fit a longer row. What do the two endpoints already tell you?"
+  },
+  "diag-f5": {
+    "answer": "6",
+    "mid": "0",
+    "sentence": "Three modes: hold, just sold, resting. hold comes from hold or from rest minus price. sold comes only from hold plus price. rest comes from rest or from sold. The answer is the best of sold and rest at the end. The fee is not part of this state.",
+    "hint3": "prices = [1, 2]. Selling today and buying today is a different situation from selling today and waiting. What does a single number 'profit so far' treat as the same?"
+  },
+  "post-f5": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "hold, just sold, and rest. A sale is not allowed to become a buy on the same day. The answer is the best of sold and rest.",
+    "hint3": "prices = [1, 3]. 'Cash so far' cannot tell a day you just sold from a day you have been resting. Which later buy does that confuse?"
+  },
+  "diag-f6": {
+    "answer": "2",
+    "mid": "1",
+    "sentence": "dp[mask] = (fewest sessions, minutes used in the open session) for the chores in the mask. The set is the state because the future depends on which chores remain, and there are only three. The answer is the session count of the full mask.",
+    "hint3": "tasks = [2, 3], limit = 4. The set {first} and the set {second} both use one session and do not leave the same remainder. What does 'minutes used so far' erase?"
+  },
+  "post-f6": {
+    "answer": "2",
+    "mid": "1",
+    "sentence": "dp[mask] = (blocks, used in the open block) for the set in the mask. The answer is the block count of the full mask.",
+    "hint3": "tasks = [3, 3], limit = 3. Two errands of equal length are not interchangeable once one is done, if a third errand existed. What does a state of only 'total minutes' forget?"
+  },
+  "card-746": {
+    "answer": "15",
+    "mid": "0",
+    "sentence": "dp[i] = the cheapest cost to reach position i, where position n is the top. You pay cost[j] when you leave j. The answer is dp[n].",
+    "hint3": "cost = [1, 100, 1]. Paying to step on a stair and paying to leave it are different. Which of those two does the price attach to?"
+  },
+  "card-746b": {
+    "answer": "2",
+    "mid": "1",
+    "sentence": "dp[i] = cheapest cost to reach position i. Pay the toll when you leave. The answer is dp[n].",
+    "hint3": "toll = [5, 1]. Starting at the second booth never pays the first toll. What does 'sum of every toll' treat as required?"
+  },
+  "card-55": {
+    "answer": "no",
+    "mid": "2",
+    "sentence": "A reach pointer is enough: the furthest index you can land on. A table of 'ways' answers a question nobody asked. The answer is no.",
+    "hint3": "nums = [2, 0, 0]. From 0 you can reach 2, but only if the hop length is 2. A state that stores the path stores more than the furthest landing. What single number replaces the path?"
+  },
+  "card-139": {
+    "answer": "yes",
+    "mid": "yes",
+    "sentence": "dp[i] = true when the first i characters can be cut into dictionary words. The answer is dp[n]. The dictionary is a check inside the transition, not a second index.",
+    "hint3": "s = apple, words = app, le. The cut after 'app' is legal and the cut after 'apple' is a different question. What does a state that stores the whole remaining string remember that the index already names?"
+  },
+  "card-139b": {
+    "answer": "no",
+    "mid": "yes",
+    "sentence": "dp[i] = whether the prefix of length i tiles. The answer is dp[n].",
+    "hint3": "s = cats, words = cat, cats. Both a cut at 3 and a cut at 4 can be live at once. A state that keeps only the last word forgets that both cuts may still be open. What does the boolean at each length already settle?"
+  },
+  "card-213": {
+    "answer": "3",
+    "mid": "3",
+    "sentence": "The circle is two ordinary lines: houses without the last, and houses without the first. dp[i] on a line is the most from the first i houses of that line. The answer is the larger of the two line answers.",
+    "hint3": "nums = [1, 2, 3, 1]. Robbing the first and the last both is the case the circle forbids. What does one linear table, run on the whole circle, still allow?"
+  },
+  "card-213b": {
+    "answer": "4",
+    "mid": "3",
+    "sentence": "Two linear problems. The answer is the larger. The state inside each line is still the thin take-or-skip.",
+    "hint3": "nums = [5]. The circle of one lamp has no neighbor. A formula that always drops the first lamp answers 0. What case does that drop?"
+  },
+  "card-f1-stalls": {
+    "answer": "12",
+    "mid": "11",
+    "sentence": "dp[i] = the most from the first i stalls, the last of them index i. Take it and add dp[i - 2], or skip it and keep dp[i - 1]. The answer is dp[n - 1].",
+    "hint3": "value = [2, 1, 1, 2]. Taking both ends is legal because they are not adjacent to each other. A state that forbids every later stall after a take is too strong. What does the thin table still allow on the far side of one skip?"
+  },
+  "card-f1-hops": {
+    "answer": "13",
+    "mid": "3",
+    "sentence": "dp[i] = the number of ways to reach pad i. The last hop was 1 or 2. The answer is dp[n]. dp[0] = 1, one way to stand at the start.",
+    "hint3": "n = 3. 'Ways to be on pad i using exactly i hops of size 1' answers 1. The real count is larger. What class of hops did that sentence erase?"
+  },
+  "card-53": {
+    "answer": "6",
+    "mid": "4",
+    "sentence": "dp[i] = the largest sum of a run that ends at index i. The answer is the max of those, not dp[n - 1], and not the sum of the whole row.",
+    "hint3": "nums = [-2, 1]. The best run ending at 1 is 1, not -1. A sentence 'best sum of the prefix' keeps -2 glued on. What does 'ending here' allow you to drop?"
+  },
+  "card-2140-alt": {
+    "answer": "5",
+    "mid": "2",
+    "sentence": "dp[i] = most points from question i onward. Solving it jumps by brain[i] + 1. The answer is dp[0].",
+    "hint3": "points = [3, 4], brain = [2, 0]. You cannot solve both. A second dimension 'brainpower remaining' also works here and is not required. What does the jump already encode?"
+  },
+  "card-coins-6": {
+    "answer": "2",
+    "mid": "1",
+    "sentence": "dp[a] = the fewest stamps that make amount a. A stamp may be reused, so the stamp is not a once-only index. The answer is dp[amount]. Unreachable amounts stay beyond amount.",
+    "hint3": "coins = [1, 3, 4], amount = 6. Three stamps of 1 and one of 3 is four stamps. Two stamps of 3 is two. Greedy taking 4 first then two 1s uses three. Which leftover does greedy refuse to reconsider?"
+  },
+  "card-squares": {
+    "answer": "3",
+    "mid": "3",
+    "sentence": "dp[a] = fewest square tiles that sum to a. The squares are an unbounded coin set. The answer is dp[n].",
+    "hint3": "n = 12. Nine plus three 1s is four tiles. Four plus four plus four is three. A sentence that always takes the largest square first misses the second. What amount is the thing that shrinks?"
+  },
+  "card-subset-11": {
+    "answer": "yes",
+    "mid": "yes",
+    "sentence": "dp[s] = whether a subset sums to s. Each coin is used once, so the coin loop walks the sums downward when you store only the row. The answer is dp[target].",
+    "hint3": "coins = [1, 5, 11, 5], target = 11. Using 5 twice is a different problem from using each 5 once. What does an upward loop allow that the sentence 'each coin once' forbids?"
+  },
+  "card-subset-b": {
+    "answer": "yes",
+    "mid": "yes",
+    "sentence": "dp[s] = whether some subset weighs s. The answer is dp[target].",
+    "hint3": "weights = [2, 3], target = 4. 2 + 2 would need to reuse a book. What does the state have to remember so that reuse is impossible?"
+  },
+  "card-518": {
+    "answer": "3",
+    "mid": "2",
+    "sentence": "dp[i][a] = the number of combinations that make amount a using only the first i coin types. The coin index is in the state. Rolling that table into one row is the coins-outer loop. An amount-only sentence counts ordered sequences instead. The answer is dp[last][amount].",
+    "hint3": "coins = [1, 2], amount = 3. The ordered sequences are 1+1+1, 1+2, 2+1. The combinations are two of those, because 1+2 and 2+1 are the same combination. Which index stops you from counting both orders?"
+  },
+  "card-518b": {
+    "answer": "3",
+    "mid": "2",
+    "sentence": "dp[i][a] = combinations for amount a with the first i sizes. The answer is the corner of that table.",
+    "hint3": "sizes = [1, 2], bowl = 3. Counting orders gives three. Counting combinations gives two. What did the amount-only sentence forget to fix?"
+  },
+  "card-377": {
+    "answer": "5",
+    "mid": "2",
+    "sentence": "dp[t] = the number of ordered sequences that sum to t. The amount is the outer loop, so order counts. The answer is dp[target]. The coin index is not in the state.",
+    "hint3": "nums = [1, 2], target = 3. If you freeze the coin order, you miss a sequence. What does 'combinations' erase that this question still wants?"
+  },
+  "card-377b": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[t] = the number of ordered playlists of length t. The answer is dp[target].",
+    "hint3": "lengths = [1, 2], target = 2. The playlist (1, 1) is not the playlist (2). Order between different songs also matters. What does sorting the songs inside the state destroy?"
+  },
+  "card-474": {
+    "answer": "4",
+    "mid": "2",
+    "sentence": "dp[i][j] = the most strings you can build with at most i zeros and j ones. Each string is used once, so both budgets walk downward. The answer is dp[m][n].",
+    "hint3": "m = 1, n = 1, strs = [10, 01, 0]. Taking 10 and 01 needs two zeros. A state with one shared capacity cannot tell a zero from a one. Which two budgets have to stay separate?"
+  },
+  "card-474b": {
+    "answer": "1",
+    "mid": "1",
+    "sentence": "dp[r][b] = most necklaces with at most r red and b blue. The answer is dp[R][B].",
+    "hint3": "A single budget equal to R + B would let you pay for a blue bead with a red one. What does that collapse?"
+  },
+  "card-494": {
+    "answer": "5",
+    "mid": "5",
+    "sentence": "Let P be the sum of the positive numbers. Then P = (total + target) / 2, and the question is the number of subsets that sum to P. dp[s] counts those subsets, each number once. The answer is dp[P], or 0 when the algebra is impossible.",
+    "hint3": "nums = [1, 0], target = 1. The zero can sit on either side and the sums match. An upward loop would reuse the 1. What does walking the sum downward protect?"
+  },
+  "card-494b": {
+    "answer": "5",
+    "mid": "10",
+    "sentence": "dp[s] = number of subsets summing to s. The heavier pan sums to (total + difference) / 2. The answer is dp of that value.",
+    "hint3": "weights = [1, 1], difference = 0. Both splits work. Counting ordered assignments of a repeated weight twice is the bug an upward loop invites. What does each weight being used once force on the loop?"
+  },
+  "card-f2-cold-01": {
+    "answer": "yes",
+    "mid": "yes",
+    "sentence": "dp[s] = whether a subset of the codes sums to s. The answer is dp[target].",
+    "hint3": "codes = [3, 3], target = 6. If the two 3s are different codes, the sum is legal. If your state stores only the value 3 and not which code, the second 3 disappears. What must the index remember?"
+  },
+  "decoy-gas": {
+    "answer": "3",
+    "mid": "0",
+    "sentence": "If the total gas is less than the total cost, the answer is -1. Otherwise the unique start is the station after the lowest prefix of gas minus cost. A two-dimensional table of 'fuel at station i having started at j' is feasible here and unnecessary.",
+    "hint3": "gas = [2, 3], cost = [3, 4]. Total gas is short. A circular house-robber split still searches for a start and misses that no start works. What one comparison settles the impossible case?"
+  },
+  "decoy-stock1": {
+    "answer": "5",
+    "mid": "1",
+    "sentence": "Track the lowest price so far and the best difference. One purchase does not need a table of modes. The answer is that best difference.",
+    "hint3": "prices = [7, 6, 4]. The best profit is 0, not a negative sale. What does 'sell on the last day' force that the running minimum does not?"
+  },
+  "card-paths": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[r][c] = ways to reach that cell from the start. It is the sum of the cell above and the cell to the left. The answer is dp[m - 1][n - 1].",
+    "hint3": "m = 2, n = 2. There are two paths. A state that stores the path itself also counts them and will not fit a 100 by 100 grid. What do the two incoming cells already summarize?"
+  },
+  "card-obstacles": {
+    "answer": "1",
+    "mid": "0",
+    "sentence": "dp[r][c] = 0 on a block, otherwise the sum of the incoming open cells. The answer is the bottom-right cell.",
+    "hint3": "A block on the start cell. Every walk dies immediately. What does a formula that always writes 1 into the first row miss?"
+  },
+  "card-health": {
+    "answer": "7",
+    "mid": "6",
+    "sentence": "dp[r][c] = the least health required on entry to (r, c) so you can still survive to the end. It is computed from the cells below and to the right. The answer is dp[0][0]. Forward 'sum so far' needs a second number, the lowest dip, and the two fight.",
+    "hint3": "dungeon = [[-2, -3], [10, -5]]? Use the given cave's bottom-right, which is -5. You need 6 health to enter it if it is the end. A forward sum can arrive there rich and still have died earlier. What second fact does the forward number fail to carry?"
+  },
+  "card-lcs-short": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[i][j] = LCS length of the first i letters of a and the first j of b. Match adds one to the diagonal. A mismatch takes the larger neighbor. The answer is dp[m][n]. This is a subsequence. A mismatch does not reset to 0.",
+    "hint3": "a = aa, b = a. The subsequence length is 1. Resetting to 0 on the second a, the way a substring does, drops a match you are allowed to keep. What does a reset erase?"
+  },
+  "card-edit-short": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[i][j] = steps to turn the first i letters of a into the first j letters of b. A match copies the diagonal. Otherwise one plus the min of delete, insert, and replace. The answer is dp[m][n].",
+    "hint3": "a = a, b = b. One replacement. Calling the upper neighbor a replacement mixes the operations. Which neighbor is the deletion of a letter from a?"
+  },
+  "card-115-ways": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[i][j] = ways the first j letters of t appear as a subsequence of the first i letters of s. You always may skip s[i - 1]. You may also use it when it matches t[j - 1]. The answer is dp[m][n].",
+    "hint3": "s = aa, t = a. There are two ways, not one. A state that only asks 'does it appear' throws the second way away. What quantity did the boolean lose?"
+  },
+  "card-lis-short": {
+    "answer": "4",
+    "mid": "3",
+    "sentence": "dp[i] = the longest increasing subsequence ending at index i. The answer is the max over i.",
+    "hint3": "nums = [1, 3, 2]. The prefix sentence 'best inside the first i' cannot say whether 2 extends a 1 or a 3. Which two endings does it glue together?"
+  },
+  "card-count-lis": {
+    "answer": "2",
+    "mid": "3",
+    "sentence": "length[i] and count[i] together: the LIS length ending at i, and how many such subsequences. When you extend, a longer length replaces the count, and an equal length adds to it. The answer is the sum of counts at the maximum length.",
+    "hint3": "nums = [1, 2, 3]. There is one longest subsequence, not three prefixes. What does counting every increasing pair confuse with counting only the longest?"
+  },
+  "card-pal-count": {
+    "answer": "6",
+    "mid": "yes",
+    "sentence": "dp[i][j] = whether s[i..j] is a palindrome. It needs the inner slice first, so i walks downward or the length walks upward. The answer is the number of true cells, not dp[0][n - 1].",
+    "hint3": "s = ab. The two letters are palindromes and the whole string is not. A state 'longest so far' never counts the two singles. What does the boolean on every range let you count?"
+  },
+  "card-lps": {
+    "answer": "4",
+    "mid": "1",
+    "sentence": "dp[i][j] = the longest palindromic subsequence inside s[i..j]. Matching ends add 2 to the inner range. Otherwise take the longer side. The answer is dp[0][n - 1].",
+    "hint3": "s = ab. The answer is 1, not 0 and not 2. A boolean 'is the slice a palindrome' cannot grow a subsequence that skips. What quantity replaces that boolean?"
+  },
+  "card-stick": {
+    "answer": "14",
+    "mid": "0",
+    "sentence": "Sort the cuts and add 0 and n. dp[i][j] = the cheapest way to finish every cut strictly between c[i] and c[j]. The next cut is the first cut on that piece, and it costs c[j] - c[i]. The answer is dp[0][last].",
+    "hint3": "n = 4, cuts = [1, 2]. The first cut chooses a piece to pay for. The last-cut story from balloons makes the cost use neighbors that have not been cut yet, which is the wrong cost. Which moment sets the cost here, the first cut or the last?"
+  },
+  "card-fee": {
+    "answer": "8",
+    "mid": "0",
+    "sentence": "cash[i] is the best profit after day i while not holding. hold[i] is the best while holding. The fee is paid once, on the sale. The answer is cash at the end.",
+    "hint3": "prices = [1, 2], fee = 2. The sale loses money, so the answer is 0. A cooldown state forbids a buy for a different reason. What does this problem forbid that cooldown does not?"
+  },
+  "card-two-tx": {
+    "answer": "6",
+    "mid": "4",
+    "sentence": "Four numbers walk along the prices: the best after the first buy, the first sale, the second buy, and the second sale. The answer is the second sale. k = 2 is this list. A larger k is the same list made longer.",
+    "hint3": "prices = [1, 2, 3]. One sale already takes the whole rise. A second sale cannot reuse the same day. What does 'unlimited sales' allow that two sales, here, do not need?"
+  },
+  "card-mode-original": {
+    "answer": "9",
+    "mid": "2",
+    "sentence": "dp[i] = the most pay from the first i days. Working day i adds pay[i] to dp[i - 2]. Resting keeps dp[i - 1]. The answer is dp[n - 1]. The 'must rest' rule is the gap, not a fee.",
+    "hint3": "pay = [5, 1]. Working both days is illegal. A fee subtracted from the second day still allows both days. What does the index gap encode that a fee does not?"
+  },
+  "card-tree-rob": {
+    "answer": "7",
+    "mid": "3",
+    "sentence": "Each house returns a pair: the best if this house is robbed, and the best if it is not. Robbed is the value plus the not-robbed results of the children. Not robbed is the best of each child's pair. The answer is the better of the root's pair.",
+    "hint3": "Robbing the root and both of its children is illegal. A single number per subtree cannot tell the parent whether the child was used. What does the pair let the parent choose?"
+  },
+  "card-1799-alt": {
+    "answer": "1",
+    "mid": "1",
+    "sentence": "dp[mask] = the best score after removing the numbers in the mask. The operation index is one plus half the number of bits already set. The answer is dp of the full mask. For two numbers the mask has one step.",
+    "hint3": "nums = [3, 6]. gcd is 3, times operation 1. A state that forgets which numbers remain cannot price the next gcd. What does the mask remember that a single 'numbers left count' does not?"
+  },
+  "card-279": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[a] = fewest squares that sum to a. The answer is dp[n].",
+    "hint3": "n = 12. The greedy 9 + 1 + 1 + 1 uses four. Three 4s use three. What does the amount-only minimum, tried for every square, reconsider?"
+  },
+  "card-1049": {
+    "answer": "1",
+    "mid": "yes",
+    "sentence": "This is subset sum. Let s be the largest subset sum that does not exceed total/2. The answer is total - 2s. dp[x] says whether sum x is reachable, each stone once.",
+    "hint3": "stones = [1, 2]. The best difference is 1, not 3. Putting every stone in one pile is what a state of 'the total' does. What subset do you actually search for?"
+  },
+  "card-718": {
+    "answer": "3",
+    "mid": "1",
+    "sentence": "dp[i][j] = the longest common subarray that ends at a[i - 1] and b[j - 1]. On a match it is the diagonal plus one. On a mismatch it is 0. The answer is the max cell, not the corner.",
+    "hint3": "a = [1, 2], b = [1, 3, 2]. The subsequence 1, 2 has length 2 and is not a subarray of b. What does the reset to 0 refuse to carry across a break?"
+  },
+  "card-152": {
+    "answer": "6",
+    "mid": "-2",
+    "sentence": "You keep two values ending at i: the largest product and the smallest product. A negative multiplies them and swaps their roles. The answer is the largest of the large-ending values, not the last cell alone.",
+    "hint3": "nums = [-2, 3]. The best product is 3, and the run ending at 3 can be 3 or -6. A single 'best ending here' drops the -6 and then cannot use it if a later negative arrives. What second ending do you have to keep?"
+  },
+  "card-1262": {
+    "answer": "18",
+    "mid": "22",
+    "sentence": "dp[r] = the largest sum you can build whose remainder modulo 3 is r. Each number updates the three remainders from the previous three. The answer is dp[0].",
+    "hint3": "nums = [4]. The best divisible sum is 0, not 4. A state of only the total sum never looks at remainder 0 after a deletion. What does the remainder index remember?"
+  },
+  "card-mod-b": {
+    "answer": "6",
+    "mid": "2",
+    "sentence": "dp[r] = best sum with sum mod 3 = r. The answer is dp[0].",
+    "hint3": "nums = [1]. The answer is 0. Keeping 1 leaves remainder 1. What deletion does the remainder-0 cell have to consider?"
+  },
+  "card-1289": {
+    "answer": "13",
+    "mid": "6",
+    "sentence": "dp[r][c] = the cheapest way to reach row r, column c under that step rule. The next row excludes column c. The answer is the min of the last row.",
+    "hint3": "grid = [[1, 2], [3, 4]]. From the 1 you may only step to 4, not to 3. Ordinary falling-path would allow 3. What did the 'any of the three neighbors' sentence allow that this rule closes?"
+  },
+  "card-fall-ordinary": {
+    "answer": "13",
+    "mid": "6",
+    "sentence": "dp[r][c] = grid[r][c] plus the cheapest legal cell in the previous row. The answer is the min of the last row.",
+    "hint3": "The same-column step is legal here. Forbidding it is a different problem. Which previous-row cells does this one read?"
+  },
+  "card-97": {
+    "answer": "yes",
+    "mid": "yes",
+    "sentence": "dp[i][j] = whether the first i letters of s1 and the first j of s2 interleave into the first i + j letters of s3. The index in s3 is i + j, so there is no third dimension. The answer is dp[m][n], and false at once when the lengths differ.",
+    "hint3": "s1 = aa, s2 = ab, s3 = aaba. The position in s3 is determined by how many letters you have taken. What does a third index repeat?"
+  },
+  "card-interleave-b": {
+    "answer": "yes",
+    "mid": "yes",
+    "sentence": "dp[i][j] = whether those prefixes interleave into the prefix of length i + j. The answer is dp[m][n].",
+    "hint3": "s1 = ab, s2 = cd, s3 = cdab. Also yes. A state that requires s1 to go first forbids a legal line. What does 'either front' have to allow at the first letter?"
+  },
+  "card-1039": {
+    "answer": "6",
+    "mid": "6",
+    "sentence": "This is the balloon recurrence on a polygon. dp[i][j] = the best triangulation of the vertices from i to j. The answer for a triangle is the product. For a longer polygon the split is the same last-edge choice as the last balloon.",
+    "hint3": "values = [1, 2, 3, 4]. There are two triangulations. A state that multiplies all four values at once is not a triangulation. What does one triangle at a time force you to split?"
+  },
+  "card-burst-alt": {
+    "answer": "20",
+    "mid": "8",
+    "sentence": "dp[i][j] = best score removing tokens strictly between i and j, k last. The answer is the full range.",
+    "hint3": "nums = [2]. Score is 1 * 2 * 1 = 2. Removing it 'first' with changing neighbors is the same only because nothing else remains. What do the endpoints stand in for?"
+  },
+  "card-sessions-b": {
+    "answer": "2",
+    "mid": "1",
+    "sentence": "dp[mask] = (sessions, used in the open session). The answer is the session count of the full mask.",
+    "hint3": "tasks = [3, 3], limit = 6. One session can hold both. A state that always starts a new session per chore ignores the leftover room. What does the 'used' half of the pair remember?"
+  },
+  "card-tree-line": {
+    "answer": "8",
+    "mid": "1",
+    "sentence": "Root the line at one end. Each node returns (rob this node, skip this node). Rob is the value plus the skip-values of the children. Skip is the best of each child's pair. The answer is the better of the root's two numbers.",
+    "hint3": "Robbing both ends is legal. Robbing all three is not. What does the parent's pair ask the child to report?"
+  },
+  "card-931": {
+    "answer": "13",
+    "mid": "5",
+    "sentence": "dp[r][c] = the cheapest way to reach that cell from the top. The answer is the minimum of the bottom row, not the corner.",
+    "hint3": "grid = [[1, 2], [3, 4]]. The answer is 1 + 3 or 1 + 4 or 2 + 3 or 2 + 4, the min of the legal ones, which is 4. A state that only walks right and down never starts in column 2. What does 'any cell on the top row' add?"
+  },
+  "aloud-1": {
+    "answer": "16",
+    "mid": "11",
+    "sentence": "dp[i] = most pay from job i onward. Taking it jumps by block[i] + 1. The answer is dp[0].",
+    "hint3": "pay = [5, 9], block = [1, 0]. You cannot take both. Say which fact the jump stores."
+  },
+  "card-rest-b": {
+    "answer": "9",
+    "mid": "5",
+    "sentence": "dp[i] = most pay from the first i days. Work adds pay[i] to dp[i - 2]. The answer is dp[n - 1].",
+    "hint3": "pay = [5, 4]. Working both is illegal. What does the one-day gap remember?"
+  }
+}
