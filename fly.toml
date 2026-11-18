@@ -1,25 +1,29 @@
-app = "dp-desk"
-primary_region = "bom"
+# fly.toml app configuration file generated for dp-desk on 2026-11-18T18:44:45+05:30
+#
+# See https://docs.fly.io/reference/configuration for information about how to use this file.
+#
+
+app = 'dp-desk'
+primary_region = 'sin'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
 
 [env]
-  DATA_DIR = "/data"
-  PORT = "8080"
+  DATA_DIR = '/data'
+  PORT = '8080'
+
+[[mounts]]
+  source = 'dp_desk_data'
+  destination = '/data'
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
 
 [[vm]]
-  cpu_kind = "shared"
+  memory = '256mb'
   cpus = 1
-  memory = "256mb"
-
-[[mounts]]
-  source = "dp_desk_data"
-  destination = "/data"
