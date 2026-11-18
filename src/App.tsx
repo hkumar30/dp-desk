@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { loadCards, loadLog, loadSchedule, postLog, readDraft, writeDraft } from "./api";
+import { currentDeskId, loadCards, loadLog, loadSchedule, postLog, readDraft, writeDraft } from "./api";
 import { adherence, consecutive, studyDate } from "./calendar";
 import { CardFace } from "./CardFace";
 import { LessonFace } from "./LessonFace";
+import { Markdown } from "./markdown";
 import {
   blockDone,
   buildDays,
@@ -32,7 +33,7 @@ export function App() {
   const [schedule, setSchedule] = useState<Schedule | null>(null);
   const [cards, setCards] = useState<Record<string, Card>>({});
   const [events, setEvents] = useState<LogEvent[]>([]);
-  const [view, setView] = useState<"today" | "sentences">("today");
+  const [view, setView] = useState<"today" | "sentences" | "help">("today");
   const [short, setShort] = useState(false);
   const [rule, setRule] = useState("");
   const [freeSentence, setFreeSentence] = useState("");
@@ -133,17 +134,17 @@ export function App() {
     <div className="sheet" data-theme="paper">
       <header className="top">
         <span>{today}</span>
-        <span>{streak} days</span>
-        <span>{ratio.closed} of {ratio.scheduled}</span>
-        <button type="button" onClick={() => setView(view === "today" ? "sentences" : "today")}>
-          {view === "today" ? "Sentences" : "Today"}
-        </button>
+        <span>{streak} days in a row</span>
+        {ratio.scheduled > 0 && <span>closed {ratio.closed} of {ratio.scheduled} study days</span>}
+        <Nav view={view} setView={setView} />
         <button type="button" onClick={() => setShort((value) => !value)}>{short ? "Full day" : "Short day"}</button>
       </header>
       {place.repeat && <p className="fine">Slip. This family stays until you close a full day.</p>}
       {short && <p className="fine">A short day is retrieval, two cards, and a rule. It still closes.</p>}
       {saveNote && <p className="fine">{saveNote}</p>}
-      {view === "sentences" ? (
+      {view === "help" ? (
+        <HowTo />
+      ) : view === "sentences" ? (
         <SentenceList events={events} />
       ) : (
         <div className="body">
@@ -151,7 +152,7 @@ export function App() {
             <ol className="index">
               {selection.map((item) => (
                 <li key={`${item.block.kind}-${item.index}`} className={item.index === activeIndex ? "now" : undefined}>
-                  {String(item.index + 1).padStart(2, "0")} {item.block.kind}
+                  {String(item.index + 1).padStart(2, "0")} {blockLabel(item.block, place.day.id)}
                 </li>
               ))}
             </ol>
@@ -180,6 +181,7 @@ export function App() {
                   }}
                 />
                 <button type="button" className="commit" onClick={() => void commitFree()}>Commit</button>
+                <p className="fine">Write the sentence, then Commit. Then mark this block done.</p>
               </article>
             )}
             {active.cardId && !shownIds && cards[active.cardId] && (
@@ -249,6 +251,7 @@ export function App() {
                   }}
                 />
                 <button type="button" className="commit" onClick={() => void commitRule()}>Commit</button>
+                <p className="fine">Write one rule, then Commit. That closes the day.</p>
               </article>
             )}
             {active.kind === "rule" && dayHasRule(events, place.day.id) && (
@@ -260,6 +263,46 @@ export function App() {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function blockLabel(block: Block, dayId: string): string {
+  if (block.diagnostic && dayId === "diagnostic") return "diagnostic";
+  return block.kind;
+}
+
+function Nav({ view, setView }: { view: "today" | "sentences" | "help"; setView: (view: "today" | "sentences" | "help") => void }) {
+  const items = [
+    ["today", "Today"],
+    ["sentences", "Sentences"],
+    ["help", "How to use"],
+  ] as const;
+  return (
+    <span className="nav">
+      {items.map(([id, label]) =>
+        view === id ? (
+          <span key={id} className="now">{label}</span>
+        ) : (
+          <button key={id} type="button" onClick={() => setView(id)}>{label}</button>
+        ),
+      )}
+    </span>
+  );
+}
+
+function HowTo() {
+  const [source, setSource] = useState("");
+  useEffect(() => {
+    fetch("/content/how.md")
+      .then((response) => (response.ok ? response.text() : "This page is not on disk yet."))
+      .then(setSource);
+  }, []);
+  const id = currentDeskId();
+  return (
+    <div>
+      <Markdown source={source} />
+      <p className="fine">Desk id {id || "unavailable in this browser"}</p>
     </div>
   );
 }
@@ -387,6 +430,7 @@ function CardList({
           minutes={minutes}
           diagnostic={diagnostic}
           hintsAllowed={hintsAllowed}
+          advance={diagnostic ? (cursor < ids.length - 1 ? "set" : "block") : cursor < ids.length - 1 ? "next" : "block"}
           onChange={onChange}
         />
       )}

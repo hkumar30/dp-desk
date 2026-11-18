@@ -337,6 +337,7 @@ export function tagLine(events: LogEvent[]): string {
   const misses = ["infeasible", "too-small", "vague", "wrong-quantity", "wrong-anchor", "transition"];
   const tagged = events.filter((event) => event.type === "tag" && event.tag && misses.includes(event.tag));
   const notes = events.filter((event) => event.type === "tag" && event.tag === "non-minimal").length;
+  const clear = events.filter((event) => event.type === "tag" && event.tag === "no-miss").length;
   const graded = events.filter((event) => event.type === "commit" && event.graded).length;
   const level4 = events.filter((event) => event.type === "hint" && event.hintLevel === 4).length;
   const base = Math.max(graded, 1);
@@ -348,5 +349,6 @@ export function tagLine(events: LogEvent[]): string {
     .filter(Boolean);
   if (level4) parts.push(`level-4 ${level4}/${base}`);
   if (notes) parts.push(`non-minimal ${notes}`);
+  if (clear) parts.push(`no-miss ${clear}`);
   return parts.join("  ") || "no tags yet";
 }

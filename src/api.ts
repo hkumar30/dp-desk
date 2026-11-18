@@ -4,7 +4,7 @@ const LOG_KEY = "desk-log";
 const DESK_ID = "desk-id";
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-function deskId(): string {
+export function currentDeskId(): string {
   try {
     const existing = localStorage.getItem(DESK_ID);
     if (existing && UUID.test(existing)) return existing;
@@ -86,7 +86,7 @@ export async function loadLesson(id: string): Promise<string> {
 
 export async function loadLog(): Promise<LogEvent[]> {
   try {
-    const response = await fetch("/api/log", { headers: { "X-Desk-Id": deskId() } });
+    const response = await fetch("/api/log", { headers: { "X-Desk-Id": currentDeskId() } });
     if (!response.ok) throw new Error("log");
     const events = (await response.json()) as LogEvent[];
     localStorage.setItem(LOG_KEY, JSON.stringify(events));
@@ -100,7 +100,7 @@ export async function postLog(event: LogEvent): Promise<boolean> {
   try {
     const response = await fetch("/api/log", {
       method: "POST",
-      headers: { "Content-Type": "application/json", "X-Desk-Id": deskId() },
+      headers: { "Content-Type": "application/json", "X-Desk-Id": currentDeskId() },
       body: JSON.stringify(event),
     });
     if (!response.ok) return false;

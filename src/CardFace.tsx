@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { checkCells as askCells, loadKey, postLog, readDraft, writeDraft } from "./api";
 import type { Card, LogEvent } from "./types";
-import { hasAttempt, hintLevel, swapsOnDate } from "./progress";
+import { cellsMatch, hasAttempt, hintLevel, swapsOnDate } from "./progress";
 
 const HINTS = [
   "What is the repeated decision?",
@@ -42,6 +42,7 @@ export function CardFace({
   diagnostic,
   hintsAllowed,
   note,
+  advance = "block",
   onChange,
 }: {
   card: Card;
@@ -54,6 +55,7 @@ export function CardFace({
   diagnostic: boolean;
   hintsAllowed: boolean;
   note?: string;
+  advance?: "next" | "block" | "set";
   onChange: () => void;
 }) {
   const duration = minutes * 60;
@@ -167,7 +169,7 @@ export function CardFace({
   }
 
   async function takeHint(next: number) {
-    if (!unlocked || next !== level + 1 || next > 4) return;
+    if (!unlocked || next !== level + 1 || next > hintCap) return;
     hinted.current = true;
     const ok = await postLog({ type: "hint", dayId, blockIndex, cardId: card.id, hintLevel: next, studyDate });
     if (!ok) {
@@ -237,6 +239,7 @@ export function CardFace({
         diagnostic={diagnostic}
         hintsAllowed={hintsAllowed}
         note={note}
+        advance={advance}
         onChange={onChange}
       />
     );
@@ -245,7 +248,14 @@ export function CardFace({
   const left = Math.max(0, duration - elapsed);
   const clock = timeUp ? "time" : `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`;
   const showHints = unlocked && hintsAllowed;
+  const hintCap = card.id.startsWith("diag-") ? 3 : 4;
+  const matched = cellsMatch(events, dayId, card.id);
   const lockedSentence = graded?.sentence ?? anyCommit?.sentence ?? "";
+  const status = !attempted
+    ? "Write the sentence, then Commit."
+    : !matched
+      ? "Type the two cells, then Check cells. The second label is what your sentence should mean."
+      : "If your sentence matches the second cell's meaning, leave it untagged.";
 
   return (
     <article className="face">
@@ -298,6 +308,18 @@ export function CardFace({
           {attempted && <span className="commit">{graded ? "Committed" : "Recorded, not graded"}</span>}
         </div>
       </div>
+      <p className="fine">{status}</p>
+      {attempted && !matched && (
+        <p className="fine">
+          {diagnostic && advance !== "set"
+            ? "This set finishes when every card's cells match."
+            : advance === "set"
+              ? "You can open the next card. This set finishes when every card's cells match."
+              : advance === "next"
+                ? "Next card opens when both cells match."
+                : "This block finishes when both cells match."}
+        </p>
+      )}
       {attempted && (
         <div className="cells">
           <label>
@@ -319,7 +341,7 @@ export function CardFace({
       {showHints && (
         <ol className="hints">
           {hintText.map((text, index) => <li key={`${index}-${text.slice(0, 24)}`}>{text}</li>)}
-          {level < 4 && <li><button type="button" onClick={() => void takeHint(level + 1)}>Hint {level + 1}</button></li>}
+          {level < hintCap && <li><button type="button" onClick={() => void takeHint(level + 1)}>Hint {level + 1}</button></li>}
         </ol>
       )}
       {!attempted && (
@@ -348,6 +370,7 @@ export function CardFace({
             <button key={id} type="button" onClick={() => void tag(id)}>{label}</button>
           ))}
           <button type="button" onClick={() => void tag("non-minimal")}>Non-minimal note</button>
+          <button type="button" onClick={() => void tag("no-miss")}>No miss</button>
         </div>
       )}
       {card.leetcode && attempted && (

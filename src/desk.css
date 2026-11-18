@@ -38,6 +38,7 @@ button {
   align-items: baseline;
 }
 
+.nav { display: inline-flex; gap: 16px; align-items: baseline; }
 .top button:last-of-type { margin-left: auto; }
 
 .body {
